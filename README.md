@@ -11,3 +11,5 @@ npm start
 ```bash
 git checkout yourbranch
 ```
+### Access
+To access the web app, point your browser to http://localhost:3000
