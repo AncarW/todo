@@ -5,12 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var nunjucks = require('nunjucks');
 
-var todoRouter = require('./routes/todo');
-
 var app = express();
+app.io = require('socket.io')();
+
+var todoRouter = require('./routes/todo')(app.io);
 
 // view templating engine setup
-nunjucks.configure(path.join(__dirname, 'views'), {
+nunjucks.configure(path.join(__dirname, 'public/views'), {
     autoescape: true,
     express: app
 });
@@ -41,3 +42,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
